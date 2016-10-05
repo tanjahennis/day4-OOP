@@ -1,3 +1,5 @@
+require './storage'
+
 class Ingredient
 
   TOMATO = "Tomato"

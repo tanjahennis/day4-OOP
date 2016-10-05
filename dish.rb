@@ -3,6 +3,7 @@ class Dish
   def initialize(name, ingredients)
     @name = name
     @ingredients = ingredients
+    @amount = amount
   end
 
   def ingredients

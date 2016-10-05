@@ -9,10 +9,6 @@ class Storage
     ]
   end
 
-  def use(amount)
-    @amount -= amount
-  end
-
   def fetch(ingredients)
     ingredients.each do |ingredient|
       item = @items.detect{|item| item.name == ingredient.name}

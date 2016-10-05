@@ -7,4 +7,6 @@ menu = Menu.new #contructor method to call the instance of the class, here Menu
 w = Waiter.new(menu, kitchen)
 
 w.greet_guest
-w.serve_guests
+while(w.serving?) do
+  w.serve_guests
+end

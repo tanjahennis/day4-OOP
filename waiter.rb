@@ -1,4 +1,14 @@
+require './check'
+
 class Waiter #name of the 'blueprint' for Waiter
+
+  def initialize(menu, kitchen)
+    @menu = menu
+    @kitchen = kitchen
+    @check = Check.new
+    @serving = true
+  end
+
   def greet_guest
     p "Good day! Welcome to our lovely restaurant"
   end
@@ -18,19 +28,16 @@ class Waiter #name of the 'blueprint' for Waiter
         list_menu
         order_food(gets.chomp.to_i)
       when 2
+        @serving = false
         p "Thank you for your visit"
       else
         p "I don't understand"
     end #case end
   end
 
-  def initialize(menu)
-    @menu = menu
-  end
-
   def list_menu
     @menu.contents.each_with_index do |dish, index|
-      p "#{index + 1}. #{dish.name}"
+      p "#{index}. #{dish.name}"
     end
   end
 
@@ -38,14 +45,15 @@ class Waiter #name of the 'blueprint' for Waiter
     dish = @menu.contents[choice]
     if @kitchen.order(dish)
       p "Dish is on its way!"
+      @check.add(dish)
     else
       p "Sorry, no pizza for you"
     end
   end
 
-  def initialize(menu, kitchen)
-    @menu = menu
-    @kitchen = kitchen
+  def serving?
+    return @serving
   end
+
 
 end #end off waiter class
