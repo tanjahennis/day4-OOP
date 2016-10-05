@@ -19,4 +19,8 @@ class Ingredient
     @amount
   end
 
+  def use(amount)
+    @amount -= amount
+  end
+
 end #end of class Ingredient

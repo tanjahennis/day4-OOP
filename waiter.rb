@@ -36,7 +36,11 @@ class Waiter #name of the 'blueprint' for Waiter
 
   def order_food(choice)
     dish = @menu.contents[choice]
-    @kitchen.order(dish)
+    if @kitchen.order(dish)
+      p "Dish is on its way!"
+    else
+      p "Sorry, no pizza for you"
+    end
   end
 
   def initialize(menu, kitchen)
